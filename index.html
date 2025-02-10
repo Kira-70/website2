@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yahya Fawzey - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        *{
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #d3d3d3;
+            background: #0b0f1a;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        header {
+            background: linear-gradient(120deg, #1a1a2e, #16213e);
+            color: #fff;
+            padding: 2.5rem 0;
+            text-align: center;
+            border-bottom: 5px solid #00ff00;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+        nav {
+            text-align: center;
+            background: #0b0f1a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            display: inline-block;
+            margin: 0 1.2rem;
+            text-decoration: none;
+            color: #d3d3d3;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #00ff00;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: #1a1a2e;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section h2 {
+            color: #00ff00;
+            border-bottom: 3px solid #00ff00;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .card {
+            background: #232a3d;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem 0;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 0.8rem;
+        }
+        .skills, .contacts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .skill-card, .project-card, .contact-card, .course-card, .certificate-card {
+            background: #2e2e2e;
+            border-radius: 15px;
+            padding: 1.5rem;
+            color: #fff;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .skill-card:hover, .project-card:hover, .contact-card:hover, .course-card:hover, .certificate-card:hover {
+            background: #00cc00;
+            transform: scale(1.05);
+        }
+        .skill-card i, .project-card i, .contact-card i, .course-card i, .certificate-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .skill-card h3, .project-card h3, .contact-card h3, .course-card h3, .certificate-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        .project-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .project-card i {
+            flex-shrink: 0;
+        }
+        .project-details {
+            flex-grow: 1;
+        }
+        .contact-card p a, .certificate-card p a {
+            word-break: break-all;
+            display: block;
+            color: #00ff00;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-card p a:hover, .certificate-card p a:hover {
+            color: #00cc00;
+        }
+        .education-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        .relevant-coursework {
+            margin-top: 1.5rem;
+        }
+        .relevant-coursework h3 {
+            margin-bottom: 1rem;
+            color: #00ff00;
+        }
+        footer {
+            background: #16213e;
+            color: #d3d3d3;
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 5px solid #00ff00;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #d3d3d3;
+            text-decoration: underline;
+        }
+        .floating-codes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .floating-codes span {
+            position: absolute;
+            color: rgba(0, 255, 0, 0.1);
+            font-size: 2rem;
+            animation: float 7s linear infinite;
+        }
+        @keyframes float {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-1000px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0.7rem 0;
+            }
+            .skills, .contacts {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .project-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-codes">
+        <span>function()</span>
+        <span>if (x)</span>
+        <span>for (i)</span>
+        <span>return</span>
+        <span>var</span>
+        <span>let</span>
+        <span>const</span>
+        <span>while</span>
+        <span>console.log()</span>
+        <span>=> {}</span>
+    </div>
+    <header>
+        <h1>Ahmed Mohammed</h1>
+        <p>Computer Science Student | Aspiring Data Analyst</p>
+    </header>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <div id="about" class="section">
+            <h2>About Me</h2>
+            <div class="card">
+                <p>I am a committed and resourceful second-year computer science student with a strong passion for programming and problem-solving. My academic journey has equipped me with solid technical skills, and I am eager to apply these in real-world applications. I thrive in collaborative environments, developing effective teamwork and communication abilities through academic projects and extracurricular activities.</p>
+            </div>
+        </div>
+        <div id="education" class="section">
+            <h2>Education</h2>
+            <div class="card">
+                <p class="education-title"><strong>Faculty of Computers and Data Science</strong>, Alexandria University<br>Expected Graduation: June 2027</p>
+                <div class="relevant-coursework">
+                    <h3>Relevant Coursework</h3>
+                    <div class="skills">
+                        <div class="course-card">
+                            <i class="fas fa-code"></i>
+                            <h3>Data Structures & Algorithms</h3>
+                        </div>
+                        <div class="course-card">
+                            <i class="fas fa-desktop"></i>
+                            <h3>Computer Organization & Programming</h3>
+                        </div>
+                        <div class="course-card">
+                            <i class="fas fa-object-group"></i>
+                            <h3>Object-Oriented Programming</h3>
+                        </div>
+                        <div class="course-card">
+                            <i class="fas fa-chart-bar"></i>
+                            <h3>Statistics & Applications</h3>
+                        </div>
+                        <div class="course-card">
+                            <i class="fas fa-database"></i>
+                            <h3>DataBases</h3>
+                        </div>
+                        <div class="course-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>DataScience Methodology</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="card">
+                <div class="projects">
+                    <div class="project-card">
+                        <i class="fas fa-university"></i>
+                        <div class="project-details">
+                            <h3>Banking System with GUI</h3>
+                            <p>Collaborated on the development of a user-friendly banking system equipped with an intuitive graphical interface.</p>
+                            <p>Focused on delivering a seamless user experience and efficient transaction handling.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div class="project-details">
+                            <h3>Shopping System with GUI</h3>
+                            <p>Designed and implemented a robust shopping system utilizing Object-Oriented Programming (OOP) principles, including Encapsulation, Abstraction, and Inheritance.</p>
+                            <p>Ensured maintainability and scalability through clean and modular code design.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <i class="fas fa-database"></i>
+                        <div class="project-details">
+                            <h3>Large Dataset Processing</h3>
+                            <p>Managed and analyzed a dataset of over 100,000 records using advanced data processing techniques.</p>
+                            <p>Generated insightful visualizations and reports, contributing to informed, data-driven decision-making.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <i class="fas fa-bullhorn"></i>
+                        <div class="project-details">
+                            <h3>Marketing Campaign Insights</h3>
+                            <p>Collaborated with a team to analyze the performance of a marketing campaign.</p>
+                            <p>Utilized SQL to extract data and generate insights, leading to optimized targeting strategies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="card">
+                <h3>Programming Languages</h3>
+                <div class="skills">
+                    <div class="skill-card">
+                        <i class="fab fa-java"></i>
+                        <h3>Java</h3>
+                        <p>Experience in object-oriented programming and developing Java applications.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-python"></i>
+                        <h3>Python</h3>
+                        <p>Proficiency in Python for data analysis, machine learning, and web development.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <h3>SQL</h3>
+                        <p>Skilled in SQL for database management and data retrieval operations.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-html5"></i>
+                        <h3>HTML</h3>
+                        <p>Strong knowledge of HTML for structuring web pages and applications.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>R</h3>
+                        <p>Proficient in R for statistical analysis and data visualization.</p>
+                    </div>
+                </div>
+                <h3>Data Analytics</h3>
+                <div class="skills">
+                    <div class="skill-card">
+                        <i class="fas fa-broom"></i>
+                        <h3>Data Cleaning</h3>
+                        <p>Proficient in cleaning and preparing data for analysis.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Visualization</h3>
+                        <p>Skilled in creating visual representations of data insights.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Insights Generation</h3>
+                        <p>Experience in generating actionable insights from data.</p>
+                    </div>
+                </div>
+                <h3>Tools & Libraries</h3>
+                <div class="skills">
+                    <div class="skill-card">
+                        <i class="fas fa-columns"></i>
+                        <h3>Pandas</h3>
+                        <p>Experience with Pandas for data manipulation and analysis.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-cubes"></i>
+                        <h3>NumPy</h3>
+                        <p>Proficiency in using NumPy for numerical computations.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-chart-pie"></i>
+                        <h3>Matplotlib</h3>
+                        <p>Skilled in creating visualizations using Matplotlib.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-file-excel"></i>
+                        <h3>Excel</h3>
+                        <p>Experience with Excel for data analysis and visualization.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-file-powerpoint"></i>
+                        <h3>PowerPoint</h3>
+                        <p>Skilled in creating presentations to communicate data insights.</p>
+                    </div>
+                </div>
+                <h3>Soft Skills</h3>
+                <div class="skills">
+                    <div class="skill-card">
+                        <i class="fas fa-eye"></i>
+                        <h3>Attention to Detail</h3>
+                        <p>Strong attention to detail ensuring accuracy in data analysis.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Working Under Pressure</h3>
+                        <p>Ability to deliver high-quality work under tight deadlines.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>Effective Communication</h3>
+                        <p>Excellent communication skills for conveying technical information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contact" class="section">
+            <h2>Contact</h2>
+            <div class="card">
+                <div class="contacts">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:ahmeeddommarr@gmail.com">ahmeeddommarr@gmail.com</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <p><a href="www.linkedin.com/in/ahmed-omar-92a58b2b4" target="_blank">Ahmed Omar</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fab fa-github"></i>
+                        <h3>GitHub</h3>
+                        <p><a href="https:github.com/Kira-70" target="_blank">Ahmed Omar</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
